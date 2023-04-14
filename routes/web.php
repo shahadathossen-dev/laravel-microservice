@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::middleware([
     Route::resource('products', ProductController::class);
     Route::put('/products/{id}/restore', [ProductController::class, 'restore'])->name('products.restore');
     Route::get('/products/{id}/deleted', [ProductController::class, 'forceDelete'])->name('products.force-delete');
+    Route::resource('categories', CategoryController::class);
     Route::resource('delegates', DelegateController::class);
     Route::post('/delegates/{delegate}/update-status', [DelegateController::class, 'updateStatus'])->name('delegates.update-status');
 });
