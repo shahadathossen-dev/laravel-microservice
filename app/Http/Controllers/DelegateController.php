@@ -10,7 +10,7 @@ use Maatwebsite\Excel\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\Subscription;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class DelegateController extends Controller
 {
@@ -154,7 +154,7 @@ class DelegateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function excel(Request $request)
+    public function exportExcel(Request $request)
     {
         return (new DelegatesExport($request->all()))->download('delegates.xlsx');
     }
@@ -165,8 +165,10 @@ class DelegateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function pdf(Request $request)
+    public function exportPdf(Request $request)
     {
-        return (new DelegatesExport($request->all()))->download('delegates.pdf', Excel::DOMPDF);
+        return Pdf::loadView('exports.delegates-pdf', [
+                'models' => Delegate::filter($request->all())->orderBy('id', 'desc')->get()
+            ])->download('delegates.pdf');
     }
 }

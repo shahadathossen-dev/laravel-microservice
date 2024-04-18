@@ -21,11 +21,11 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::apiResource('products', ProductController::class);
-    Route::put('/products/{id}/restore', [ProductController::class, 'restore'])->name('rest.products.restore');
-    Route::get('/products/{id}/deleted', [ProductController::class, 'forceDelete'])->name('rest.products.force-delete');
+    // Route::apiResource('products', ProductController::class);
+    // Route::put('/products/{id}/restore', [ProductController::class, 'restore'])->name('rest.products.restore');
+    // Route::get('/products/{id}/deleted', [ProductController::class, 'forceDelete'])->name('rest.products.force-delete');
 
 
-    Route::get('delegates/excel', [DelegateController::class, 'excel'])->name('delegates.excel');
-    Route::get('delegates/pdf', [DelegateController::class, 'pdf'])->name('delegates.pdf');
+    // Route::get('delegates/excel', [DelegateController::class, 'excel'])->name('delegates.excel');
+    // Route::get('delegates/pdf', [DelegateController::class, 'pdf'])->name('delegates.pdf');
 });

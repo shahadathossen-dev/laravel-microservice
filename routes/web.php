@@ -45,7 +45,10 @@ Route::middleware([
     Route::get('/products/{id}/deleted', [ProductController::class, 'forceDelete'])->name('products.force-delete');
     Route::resource('categories', CategoryController::class);
     Route::resource('delegates', DelegateController::class);
+    Route::get('/delegates/export/excel', [DelegateController::class, 'exportExcel'])->name('delegates.excel');
+    Route::get('/delegates/export/pdf', [DelegateController::class, 'exportPdf'])->name('delegates.pdf');
     Route::post('/delegates/{delegate}/update-status', [DelegateController::class, 'updateStatus'])->name('delegates.update-status');
+    Route::get('/test', fn() => dd('test'))->name('route.test');
 });
 
 // Message Route

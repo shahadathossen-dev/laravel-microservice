@@ -81,7 +81,7 @@ const isActive = (routes) => routes.some((currentRoute) => route().current(curre
         Resources
       </p>
 
-      <!-- Categories -->
+      <!-- Products -->
       <SidebarItem
         title="Products"
         :active="isActive(['products.*'])"
@@ -95,6 +95,7 @@ const isActive = (routes) => routes.some((currentRoute) => route().current(curre
         Products
       </SidebarItem>
 
+      <!-- Delegates -->
       <SidebarItem
         title="Delegates"
         :active="isActive(['delegates.*'])"
