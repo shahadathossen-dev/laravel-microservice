@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\DelegateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,8 +22,8 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     });
 
     Route::apiResource('products', ProductController::class);
-    Route::put('/products/{id}/restore', [DelegateController::class, 'restore'])->name('rest.products.restore');
-    Route::get('/products/{id}/deleted', [DelegateController::class, 'forceDelete'])->name('rest.products.force-delete');
+    Route::put('/products/{id}/restore', [ProductController::class, 'restore'])->name('rest.products.restore');
+    Route::get('/products/{id}/deleted', [ProductController::class, 'forceDelete'])->name('rest.products.force-delete');
 
 
     Route::get('delegates/excel', [DelegateController::class, 'excel'])->name('delegates.excel');

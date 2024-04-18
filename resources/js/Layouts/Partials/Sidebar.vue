@@ -15,7 +15,6 @@ const isActive = (routes) => routes.some((currentRoute) => route().current(curre
 <template>
   <div class="sidebar shadow-md" :class="{ collapsed: collapsed }">
     <Link :href="route('dashboard')" class="flex items-center justify-center px-5 h-20">
-      <ApplicationMark class="block h-10 w-10" />
       <div class="ml-4 flex-grow">
         <Transition name="zoomin">
           <ApplicationLogo class="" />
